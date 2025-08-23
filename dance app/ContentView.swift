@@ -1,24 +1,24 @@
-//
-//  ContentView.swift
-//  dance app
-//
-//  Created by Adhavan senthil kumar on 23/8/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 20) {
+            Text("Dance Pose Detection")
+                .font(.title)
+                .padding()
+
+            Button("Run Pose Detection") {
+                if let url = Bundle.main.url(forResource: "dancevid", withExtension: "mov") {
+                    PoseDetector().processVideo(url: url)
+                } else {
+                    print("Video not found in bundle!")
+                }
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
