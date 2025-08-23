@@ -13,5 +13,5 @@ struct lwk_dancingApp: App {
         WindowGroup {
             HomeView()
         }
-    }
+    } 
 }
