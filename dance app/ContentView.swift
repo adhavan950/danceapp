@@ -8,7 +8,7 @@ struct ContentView: View {
                 .padding()
 
             Button("Run Pose Detection") {
-                if let url = Bundle.main.url(forResource: "dancevid", withExtension: "mov") {
+                if let url = Bundle.main.url(forResource: "gooddance4",withExtension: "mov") {
                     PoseDetector().processVideo(url: url)
                 } else {
                     print("Video not found in bundle!")
@@ -21,4 +21,5 @@ struct ContentView: View {
         }
     }
 }
+
 
