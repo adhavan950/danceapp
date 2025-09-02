@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DanceItemView: View {
     let dance: DanceItem
+    let iindex: Int
     var body: some View {
         NavigationStack {
             NavigationLink {
@@ -29,7 +30,7 @@ struct DanceItemView: View {
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 16, style: .continuous)
-                       // .fill(colooor)
+                        .fill(iindex % 2 == 0 ? Color.turq : Color.orag)
                         .shadow(radius: 3)
                 )
                 .contentShape(Rectangle())
@@ -44,5 +45,5 @@ struct DanceItemView: View {
 
 
 #Preview {
-    DanceItemView(dance: DanceItem(id: UUID(), videoLink: nil, name: "A dance", difficulty: "Easy", points: 10))
+    DanceItemView(dance: DanceItem(id: UUID(), videoLink: nil, name: "A dance", difficulty: "Easy", points: 10), iindex: 0)
 }

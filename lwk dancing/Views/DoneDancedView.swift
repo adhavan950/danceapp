@@ -7,26 +7,31 @@
 
 import SwiftUI
 
-struct DoneDancedView: View { // shows past dances + stats
+struct DoneDancedView: View {
     @StateObject private var viewmodel = recentDances()
 
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(viewmodel.dances) { item in
-                    DanceItemView(dance: item)
+            ZStack {
+                Color.bgcol.ignoresSafeArea()
+
+                List(viewmodel.dances.indices, id: \.self) { i in
+                    let item = viewmodel.dances[i]
+                    DanceItemView(dance: item, iindex: i)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                 }
+                .scrollContentBackground(.hidden)
+                .background(.clear)
+                .listStyle(.plain)
             }
             .navigationTitle("Past Dances")
         }
     }
 }
 
-#Preview {
-    DoneDancedView()
-}
-
 
 #Preview {
     DoneDancedView()
 }
+

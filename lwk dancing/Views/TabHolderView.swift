@@ -14,6 +14,9 @@ struct TabHolderView: View {
             Tab("Home", systemImage: "house") {
                 HomeView()
             }
+            Tab("Past Dances", systemImage: "figure.dance") {
+                DoneDancedView()
+            }
             Tab("Settings", systemImage: "gear") {
                 Text("Settings")
             }
