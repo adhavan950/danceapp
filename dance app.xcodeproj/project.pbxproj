@@ -10,14 +10,6 @@
 		4A5F5D322E59500D001D9110 /* dance app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dance app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		4A5F5D342E59500D001D9110 /* dance app */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "dance app";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		4A5F5D2F2E59500D001D9110 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -32,7 +24,6 @@
 		4A5F5D292E59500D001D9110 = {
 			isa = PBXGroup;
 			children = (
-				4A5F5D342E59500D001D9110 /* dance app */,
 				4A5F5D332E59500D001D9110 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +50,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				4A5F5D342E59500D001D9110 /* dance app */,
 			);
 			name = "dance app";
 			packageProductDependencies = (
