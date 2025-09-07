@@ -19,7 +19,7 @@ struct HomeView: View {
                 Color.bgcol
                     .ignoresSafeArea()
                 VStack(alignment: .trailing) {
-                    Text("Points: ")
+                    Text("")
                         .font(.title2)
                 }
                 VStack(alignment: .leading) {
@@ -34,7 +34,7 @@ struct HomeView: View {
                                 let item = newDances[index]
                                 
                                 NavigationLink {
-                                    Text("placeholder")
+                                    DanceRecorderView()
                                 } label: {
                                     DanceCard(title: item, index: index + 1)
                                         .frame(width: 250, height: 150)
@@ -59,7 +59,7 @@ struct HomeView: View {
                                 let item = recentDances[index]
                                 
                                 NavigationLink {
-                                    Text("placeholder")
+                                    DanceRecorderView()
                                 } label: {
                                     DanceCard(title: item, index: index)
                                         .frame(width: 250, height: 150)

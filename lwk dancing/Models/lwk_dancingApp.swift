@@ -14,7 +14,7 @@ import CoreMedia
 struct lwk_dancingApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            TabHolderView()
         }
     } 
 }
