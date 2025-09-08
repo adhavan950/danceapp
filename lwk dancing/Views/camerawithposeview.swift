@@ -44,12 +44,12 @@ struct CameraWithPoseView: UIViewControllerRepresentable {
         }
         session.addInput(input)
         
-        // Preview layer
+       
         let preview = AVCaptureVideoPreviewLayer(session: session)
         preview.videoGravity = .resizeAspectFill
         preview.frame = UIScreen.main.bounds
         
-        // ✅ Fix orientation at startup
+        
         if let connection = preview.connection, connection.isVideoOrientationSupported {
             switch UIDevice.current.orientation {
             case .landscapeLeft:
@@ -73,7 +73,7 @@ struct CameraWithPoseView: UIViewControllerRepresentable {
         
         vc.view = previewView
         
-        // Output for Vision
+        
         let output = AVCaptureVideoDataOutput()
         let queue = DispatchQueue(label: "videoQueue")
         let coordinator = context.coordinator
