@@ -76,6 +76,7 @@ struct HomeView: View {
                 }
                 .padding(.vertical)
                 .navigationTitle("Hello \(username),")
+                .navigationBarBackButtonHidden()
                 
         
             }
