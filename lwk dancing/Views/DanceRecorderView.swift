@@ -15,10 +15,8 @@ struct DanceRecorderView: View {
     
     @State private var progress: Double = 0.0
     @State private var timer: Timer? = nil
-    
-    
+    @State private var showDanceMessage: Bool = false
     @State private var countdown: Int = 0
-    
     var body: some View {
         ZStack {
             VStack(spacing: 16) {
@@ -76,6 +74,12 @@ struct DanceRecorderView: View {
                     .font(.system(size: 80, weight: .bold))
                     .foregroundColor(.white)
                     .transition(.scale)
+            } else if showDanceMessage {
+                Color.black.opacity(0.6).ignoresSafeArea()
+                Text("DANCE!")
+                    .font(.system(size: 60, weight: .heavy))
+                    .foregroundColor(.white)
+                    .transition(.opacity)
             }
         }
         .onAppear {
@@ -127,18 +131,25 @@ struct DanceRecorderView: View {
  
     private func startCountdown() {
         countdown = 5
+        showDanceMessage = false
+        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             if countdown > 1 {
                 countdown -= 1
             } else {
                 timer.invalidate()
                 countdown = 0
-                startRecording()   // ✅ real start
+                showDanceMessage = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    showDanceMessage = false
+                    startRecording()
+                }
             }
         }
     }
+
     
-    // MARK: - Start Recording After Countdown
+   
     private func startRecording() {
         guard let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
               let refURL = Bundle.main.url(forResource: "referenceDance", withExtension: "mov") else { return }
@@ -177,7 +188,6 @@ struct DanceRecorderView: View {
         }
     }
     
-    // MARK: - Progress Updates
     private func startProgressUpdates() {
         stopProgressUpdates()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
@@ -197,7 +207,7 @@ struct DanceRecorderView: View {
     }
 }
 
-// MARK: - Camera Preview
+
 struct CameraPreview: UIViewRepresentable {
     class VideoPreviewView: UIView {
         override class var layerClass: AnyClass { AVCaptureVideoPreviewLayer.self }
